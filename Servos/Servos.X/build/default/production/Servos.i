@@ -7,21 +7,9 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "Servos.c" 2
-# 10 "Servos.c"
-#pragma config FOSC=INTRC_NOCLKOUT
-#pragma config WDTE=OFF
-#pragma config PWRTE=OFF
-#pragma config MCLRE=OFF
-#pragma config CP=OFF
-#pragma config CPD=OFF
 
-#pragma config BOREN=OFF
-#pragma config IESO=OFF
-#pragma config FCMEN=OFF
-#pragma config LVP=OFF
 
-#pragma config WRT=OFF
-#pragma config BOR4V=BOR40V
+
 
 
 
@@ -2506,256 +2494,84 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 27 "Servos.c" 2
+# 8 "Servos.c" 2
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
-# 13 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int8_t;
 
 
 
 
 
 
-typedef signed int int16_t;
+#pragma config FOSC = INTRC_CLKOUT
 
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = OFF
 
+#pragma config CP = OFF
 
+#pragma config CPD = OFF
 
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
 
+#pragma config FCMEN = OFF
 
+#pragma config LVP = OFF
 
-typedef __int24 int24_t;
 
 
+#pragma config BOR4V = BOR40V
 
+#pragma config WRT = OFF
 
 
 
 
-typedef signed long int int32_t;
-# 52 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint8_t;
 
 
 
+char Valor_TMR0 = 100;
 
 
-typedef unsigned int uint16_t;
 
 
 
+void __attribute__((picinterrupt(("")))) isr (void){
 
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-
-
-typedef unsigned long int uint32_t;
-# 88 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_least8_t;
-
-
-
-
-
-
-
-typedef signed int int_least16_t;
-# 109 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_least24_t;
-# 118 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef signed long int int_least32_t;
-# 136 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_least8_t;
-
-
-
-
-
-
-typedef unsigned int uint_least16_t;
-# 154 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_least24_t;
-
-
-
-
-
-
-
-typedef unsigned long int uint_least32_t;
-# 181 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_fast8_t;
-
-
-
-
-
-
-typedef signed int int_fast16_t;
-# 200 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_fast24_t;
-
-
-
-
-
-
-
-typedef signed long int int_fast32_t;
-# 224 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_fast8_t;
-
-
-
-
-
-typedef unsigned int uint_fast16_t;
-# 240 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_fast24_t;
-
-
-
-
-
-
-typedef unsigned long int uint_fast32_t;
-# 268 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef int32_t intmax_t;
-# 282 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef uint32_t uintmax_t;
-
-
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-# 28 "Servos.c" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\math.h" 1 3
-
-
-
-# 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__unsupported.h" 1 3
-# 4 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\math.h" 2 3
-# 30 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\math.h" 3
-extern double fabs(double);
-extern double floor(double);
-extern double ceil(double);
-extern double modf(double, double *);
-extern double sqrt(double);
-extern double atof(const char *);
-extern double sin(double) ;
-extern double cos(double) ;
-extern double tan(double) ;
-extern double asin(double) ;
-extern double acos(double) ;
-extern double atan(double);
-extern double atan2(double, double) ;
-extern double log(double);
-extern double log10(double);
-extern double pow(double, double) ;
-extern double exp(double) ;
-extern double sinh(double) ;
-extern double cosh(double) ;
-extern double tanh(double);
-extern double eval_poly(double, const double *, int);
-extern double frexp(double, int *);
-extern double ldexp(double, int);
-extern double fmod(double, double);
-extern double trunc(double);
-extern double round(double);
-# 29 "Servos.c" 2
-
-
-
-
-
-
-
-
-char pot_1;
-
-
-
-
-void setup(void);
-void PWM_1(void);
-
-
-
-void __attribute__((picinterrupt(("")))) isr (void)
-{
-    if (PIR1bits.ADIF == 1) {
-        PIR1bits.ADIF = 0;
-
-        if (ADCON0bits.CHS == 0)
-        {
-            pot_1 = ADRESH;
-
-            RD0 = RC2;
-            ADCON0bits.CHS = 1;
+    if (ADIF == 1){
+        ADIF = 0;
+        if (ADCON0bits.CHS == 3){
+            ADCON0bits.CHS = 4;
         }
-        else if (ADCON0bits.CHS == 1){
-
-            ADCON0bits.CHS = 0;
-
+        else{
+            ADCON0bits.CHS = 3;
         }
-
+        _delay((unsigned long)((50)*(8000000/4000000.0)));
+        ADCON0bits.GO = 1;
     }
-    _delay((unsigned long)((50)*(1000000/4000000.0)));
-    ADCON0bits.GO = 1;
 
+
+    if (T0IF == 1){
+        T0IF = 0;
+        TMR0 = Valor_TMR0;
+    }
 }
-
-
-
 
 void main(void) {
-    setup();
-    while (1)
-    {
 
-        PWM_1();
-}
-}
+    IRCF0 = 1;
+    IRCF1 = 1;
+    IRCF2 = 1;
 
 
-
-
-
-
-void setup (void)
-{
-
-    ANSEL = 0b00000011;
-    ANSELH = 0;
-    TRISC = 0b00000000;
-    TRISA = 0b00000011;
-    TRISB = 0b00000000;
-    TRISD = 0b00000000;
-    PORTA = 0;
-    PORTB = 0;
-    PORTC = 0;
-    PORTD = 0;
-    PORTE = 0;
-
-
-    OSCCONbits.IRCF2 = 1;
-    OSCCONbits.IRCF1 = 0;
-    OSCCONbits.IRCF0 = 0;
-    OSCCONbits.SCS = 1;
+    PS0 = 1;
+    PS1 = 0;
+    PS2 = 1;
+    T0CS = 0;
+    PSA = 0;
+    INTCON = 0b10101000;
+    TMR0 = Valor_TMR0;
 
 
     PIE1bits.ADIE = 1;
@@ -2766,43 +2582,26 @@ void setup (void)
     ADCON0bits.ADCS0 = 0;
     ADCON0bits.ADCS1 = 1;
     ADCON0bits.ADON = 1;
-    _delay((unsigned long)((50)*(1000000/4000000.0)));
+    _delay((unsigned long)((50)*(8000000/4000000.0)));
     ADCON0bits.GO = 1;
 
 
-
-    INTCONbits.PEIE = 1;
-    INTCONbits.GIE = 1;
-
-
-    PORTC = 0b000000100;
-    PR2 = 255;
-    CCP1CONbits.P1M = 0b00;
-    CCP1CONbits.CCP1M3 = 1;
-    CCP1CONbits.CCP1M2 = 1;
-    CCP1CONbits.CCP1M1 = 0;
-    CCP1CONbits.CCP1M0 = 0;
-
-    CCPR1L = 0;
-    CCP1CONbits.DC1B = 0;
+    ANSEL = 0b00000001;
+    ANSELH = 0;
+    TRISA = 0xff;
+    TRISC = 0;
+    TRISD = 0;
+    TRISE = 0;
 
 
-    PIR1bits.TMR2IF = 0;
-    T2CONbits.T2CKPS1 = 1;
-    T2CONbits.T2CKPS0 = 1;
-    T2CONbits.TMR2ON = 1;
-
-    while (PIR1bits.TMR2IF == 0);
-    PIR1bits.TMR2IF = 0;
+    PORTA = 0;
+    PORTB = 0;
     PORTC = 0;
-
-    return;
-}
-
-void PWM_1(void){
-
-    CCPR1L = (pot_1-0)*(32-15)/(255-0)+15;
+    PORTD = 0;
+    PORTE = 0;
 
 
-    return;
+    while(1){
+
+    }
 }
