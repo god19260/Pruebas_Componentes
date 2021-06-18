@@ -2532,6 +2532,8 @@ extern __bank0 __bit __timeout;
 
 
 char Valor_TMR0 = 100;
+char Contador_Servo_1;
+char Valor_Servo_1;
 
 
 
@@ -2541,11 +2543,10 @@ void __attribute__((picinterrupt(("")))) isr (void){
 
     if (ADIF == 1){
         ADIF = 0;
-        if (ADCON0bits.CHS == 3){
-            ADCON0bits.CHS = 4;
-        }
-        else{
-            ADCON0bits.CHS = 3;
+        if (ADCON0bits.CHS == 0){
+            ADCON0bits.CHS = 1;
+        } else if(ADCON0bits.CHS == 1){
+            ADCON0bits.CHS = 0;
         }
         _delay((unsigned long)((50)*(8000000/4000000.0)));
         ADCON0bits.GO = 1;
@@ -2553,8 +2554,18 @@ void __attribute__((picinterrupt(("")))) isr (void){
 
 
     if (T0IF == 1){
+
+        PIE1bits.ADIE = 0;
         T0IF = 0;
         TMR0 = Valor_TMR0;
+
+        RD7 = 1;
+        while (Contador_Servo_1 <= Valor_Servo_1){
+            Contador_Servo_1++;
+        }
+        Contador_Servo_1 = 0;
+        RD7=0;
+        PIE1bits.ADIE = 1;
     }
 }
 
@@ -2566,7 +2577,7 @@ void main(void) {
 
 
     PS0 = 1;
-    PS1 = 0;
+    PS1 = 1;
     PS2 = 1;
     T0CS = 0;
     PSA = 0;
@@ -2586,7 +2597,7 @@ void main(void) {
     ADCON0bits.GO = 1;
 
 
-    ANSEL = 0b00000001;
+    ANSEL = 0b00000011;
     ANSELH = 0;
     TRISA = 0xff;
     TRISC = 0;
@@ -2602,6 +2613,10 @@ void main(void) {
 
 
     while(1){
-
+        Valor_Servo_1 = 148;
+        RD4 = 1;
+        _delay((unsigned long)((300)*(8000000/4000.0)));
+        RD4 = 0;
+        _delay((unsigned long)((300)*(8000000/4000.0)));
     }
 }

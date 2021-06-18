@@ -42,6 +42,8 @@
 //------------------------------------------------------------------------------
 //********************* Declaraciones de variables *****************************
 char Valor_TMR0 = 100;
+char Contador_Servo_1;
+char Valor_Servo_1;
 //------------------------------------------------------------------------------
 //***************************** Prototipos *************************************
 
@@ -51,11 +53,10 @@ void __interrupt() isr (void){
     // Interrupcion del ADC module
     if (ADIF == 1){
         ADIF = 0;
-        if (ADCON0bits.CHS == 3){
-            ADCON0bits.CHS = 4;
-        } 
-        else{
-            ADCON0bits.CHS = 3;
+        if (ADCON0bits.CHS == 0){
+            ADCON0bits.CHS = 1;
+        } else if(ADCON0bits.CHS == 1){
+            ADCON0bits.CHS = 0;
         }   
         __delay_us(50);
         ADCON0bits.GO = 1; 
@@ -63,8 +64,18 @@ void __interrupt() isr (void){
     
     // Interrupcion del timer0
     if (T0IF == 1){
+        // Interrupcion cada 20ms: tmr0 100, prescaler 256, 8MHz de oscilador
+        PIE1bits.ADIE = 0;
         T0IF = 0;
-        TMR0 = Valor_TMR0;  
+        TMR0 = Valor_TMR0;
+        // Prueba servo 1
+        RD7 = 1;
+        while (Contador_Servo_1 <= Valor_Servo_1){ // max 198, min 98
+            Contador_Servo_1++;
+        }
+        Contador_Servo_1 = 0;
+        RD7=0;
+        PIE1bits.ADIE = 1;
     } // Fin de interrupción timer0
 }    
 
@@ -76,8 +87,8 @@ void main(void) {
     
     // Configurar Timer0
     PS0 = 1;
-    PS1 = 0;
-    PS2 = 1;         //Prescaler de 64
+    PS1 = 1;
+    PS2 = 1;         //Prescaler de 256
     T0CS = 0;
     PSA = 0;
     INTCON = 0b10101000;
@@ -96,7 +107,7 @@ void main(void) {
     ADCON0bits.GO = 1;
     
     // Configurar puertos
-    ANSEL  = 0b00000001;
+    ANSEL  = 0b00000011;
     ANSELH = 0;
     TRISA  = 0xff;  // Definir el puerto A como entradas
     TRISC  = 0;     // Definir el puerto C como salida
@@ -112,7 +123,11 @@ void main(void) {
     
     //loop principal
     while(1){  
-        
+        Valor_Servo_1 = 148;
+        RD4 = 1;
+        __delay_ms(300);
+        RD4 = 0;
+        __delay_ms(300);
     } // fin loop principal while 
 } // fin main
 
