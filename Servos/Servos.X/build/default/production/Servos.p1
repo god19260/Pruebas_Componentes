@@ -48,6 +48,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 59: extern volatile unsigned char TMR0 __attribute__((address(0x001)));
 [v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
+"4184
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4184: extern volatile __bit RD1 __attribute__((address(0x41)));
+[v _RD1 `Vb ~T0 @X0 0 e@65 ]
 "4202
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4202: extern volatile __bit RD7 __attribute__((address(0x47)));
 [v _RD7 `Vb ~T0 @X0 0 e@71 ]
@@ -123,9 +126,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "414
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 414: extern volatile unsigned char PORTE __attribute__((address(0x009)));
 [v _PORTE `Vuc ~T0 @X0 0 e@9 ]
-"4193
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4193: extern volatile __bit RD4 __attribute__((address(0x44)));
-[v _RD4 `Vb ~T0 @X0 0 e@68 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -391,214 +391,216 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Servos.c: 30:         PIE1bits.ADIE = 0;
 [p x LVP  =  OFF          ]
 "34
-[; ;Servos.c: 34:         RD7 = 1;
+[; ;Servos.c: 34:         if (Valor_Servo_1 == 200){
 [p x BOR4V  =  BOR40V    ]
 "36
-[; ;Servos.c: 36:             Contador_Servo_1++;
+[; ;Servos.c: 36:         }
 [p x WRT  =  OFF         ]
 "44
-[; ;Servos.c: 44: void main(void) {
+[; ;Servos.c: 44:     }
 [v _Valor_TMR0 `uc ~T0 @X0 1 e ]
 [i _Valor_TMR0
 -> -> 100 `i `uc
 ]
 "45
-[; ;Servos.c: 45: 
-[v _Contador_Servo_1 `uc ~T0 @X0 1 e ]
+[; ;Servos.c: 45: }
+[v _Contador_Servo_1 `i ~T0 @X0 1 e ]
 "46
-[; ;Servos.c: 46:     IRCF0 = 1;
+[; ;Servos.c: 46: 
 [v _Valor_Servo_1 `uc ~T0 @X0 1 e ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
 "52
-[; ;Servos.c: 52:     PS1 = 1;
+[; ;Servos.c: 52: 
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
 "54
-[; ;Servos.c: 54:     T0CS = 0;
+[; ;Servos.c: 54:     PS0 = 1;
 [e $ ! == -> _ADIF `i -> 1 `i 139  ]
 {
 "55
-[; ;Servos.c: 55:     PSA = 0;
+[; ;Servos.c: 55:     PS1 = 1;
 [e = _ADIF -> -> 0 `i `b ]
 "56
-[; ;Servos.c: 56:     INTCON = 0b10101000;
+[; ;Servos.c: 56:     PS2 = 1;
 [e $ ! == -> . . _ADCON0bits 0 2 `i -> 0 `i 140  ]
 {
 "57
-[; ;Servos.c: 57:     TMR0 = Valor_TMR0;
+[; ;Servos.c: 57:     T0CS = 0;
 [e = . . _ADCON0bits 0 2 -> -> 1 `i `uc ]
 "58
-[; ;Servos.c: 58: 
+[; ;Servos.c: 58:     PSA = 0;
 }
 [e $U 141  ]
 [e :U 140 ]
 [e $ ! == -> . . _ADCON0bits 0 2 `i -> 1 `i 142  ]
 {
 "59
-[; ;Servos.c: 59: 
+[; ;Servos.c: 59:     INTCON = 0b10101000;
 [e = . . _ADCON0bits 0 2 -> -> 0 `i `uc ]
 "60
-[; ;Servos.c: 60:     PIE1bits.ADIE = 1;
+[; ;Servos.c: 60:     TMR0 = Valor_TMR0;
 }
 [e :U 142 ]
 [e :U 141 ]
 "61
-[; ;Servos.c: 61:     ADIF = 0;
+[; ;Servos.c: 61: 
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "62
-[; ;Servos.c: 62:     ADCON1bits.ADFM = 0;
+[; ;Servos.c: 62: 
 [e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
 "63
-[; ;Servos.c: 63:     ADCON1bits.VCFG0 = 0;
+[; ;Servos.c: 63:     PIE1bits.ADIE = 1;
 }
 [e :U 139 ]
 "66
-[; ;Servos.c: 66:     ADCON0bits.ADCS1 = 1;
+[; ;Servos.c: 66:     ADCON1bits.VCFG0 = 0;
 [e $ ! == -> _T0IF `i -> 1 `i 143  ]
 {
 "68
-[; ;Servos.c: 68:     _delay((unsigned long)((50)*(8000000/4000000.0)));
+[; ;Servos.c: 68:     ADCON0bits.ADCS0 = 0;
 [e = . . _PIE1bits 0 6 -> -> 0 `i `uc ]
 "69
-[; ;Servos.c: 69:     ADCON0bits.GO = 1;
+[; ;Servos.c: 69:     ADCON0bits.ADCS1 = 1;
 [e = _T0IF -> -> 0 `i `b ]
 "70
-[; ;Servos.c: 70: 
+[; ;Servos.c: 70:     ADCON0bits.ADON = 1;
 [e = _TMR0 -> _Valor_TMR0 `uc ]
 "72
-[; ;Servos.c: 72:     ANSEL = 0b00000011;
-[e = _RD7 -> -> 1 `i `b ]
-"73
-[; ;Servos.c: 73:     ANSELH = 0;
-[e $U 144  ]
-[e :U 145 ]
+[; ;Servos.c: 72:     ADCON0bits.GO = 1;
+[e $ ! == -> _Valor_Servo_1 `i -> 200 `i 144  ]
 {
+"73
+[; ;Servos.c: 73: 
+[e = _RD1 -> -> 1 `i `b ]
 "74
-[; ;Servos.c: 74:     TRISA = 0xff;
-[e ++ _Contador_Servo_1 -> -> 1 `i `uc ]
-"75
-[; ;Servos.c: 75:     TRISC = 0;
+[; ;Servos.c: 74: 
 }
 [e :U 144 ]
-"73
-[; ;Servos.c: 73:     ANSELH = 0;
-[e $ <= -> _Contador_Servo_1 `i -> _Valor_Servo_1 `i 145  ]
-[e :U 146 ]
+"75
+[; ;Servos.c: 75:     ANSEL = 0b00000011;
+[e = _Contador_Servo_1 -> 0 `i ]
 "76
-[; ;Servos.c: 76:     TRISD = 0;
-[e = _Contador_Servo_1 -> -> 0 `i `uc ]
+[; ;Servos.c: 76:     ANSELH = 0;
+[e = _RD7 -> -> 1 `i `b ]
 "77
-[; ;Servos.c: 77:     TRISE = 0;
-[e = _RD7 -> -> 0 `i `b ]
+[; ;Servos.c: 77:     TRISA = 0xff;
+[e $U 145  ]
+[e :U 146 ]
+{
 "78
-[; ;Servos.c: 78: 
-[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+[; ;Servos.c: 78:     TRISC = 0;
+[e ++ _Contador_Servo_1 -> 1 `i ]
 "79
-[; ;Servos.c: 79: 
+[; ;Servos.c: 79:     TRISD = 0;
+}
+[e :U 145 ]
+"77
+[; ;Servos.c: 77:     TRISA = 0xff;
+[e $ <= _Contador_Servo_1 -> _Valor_Servo_1 `i 146  ]
+[e :U 147 ]
+"80
+[; ;Servos.c: 80:     TRISE = 0;
+[e = _RD7 -> -> 0 `i `b ]
+"81
+[; ;Servos.c: 81: 
+[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+"82
+[; ;Servos.c: 82: 
 }
 [e :U 143 ]
-"80
-[; ;Servos.c: 80:     PORTA = 0;
+"83
+[; ;Servos.c: 83:     PORTA = 0;
 [e :UE 138 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"82
-[; ;Servos.c: 82:     PORTC = 0;
+"85
+[; ;Servos.c: 85:     PORTC = 0;
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"84
-[; ;Servos.c: 84:     PORTE = 0;
+"87
+[; ;Servos.c: 87:     PORTE = 0;
 [e = _IRCF0 -> -> 1 `i `b ]
-"85
-[; ;Servos.c: 85: 
+"88
+[; ;Servos.c: 88: 
 [e = _IRCF1 -> -> 1 `i `b ]
-"86
-[; ;Servos.c: 86: 
-[e = _IRCF2 -> -> 1 `i `b ]
 "89
-[; ;Servos.c: 89:         RD4 = 1;
-[e = _PS0 -> -> 1 `i `b ]
-"90
-[; ;Servos.c: 90:         _delay((unsigned long)((300)*(8000000/4000.0)));
-[e = _PS1 -> -> 1 `i `b ]
-"91
-[; ;Servos.c: 91:         RD4 = 0;
-[e = _PS2 -> -> 1 `i `b ]
+[; ;Servos.c: 89: 
+[e = _IRCF2 -> -> 1 `i `b ]
 "92
-[; ;Servos.c: 92:         _delay((unsigned long)((300)*(8000000/4000.0)));
-[e = _T0CS -> -> 0 `i `b ]
+[; ;Servos.c: 92:         Valor_Servo_1 = 148;
+[e = _PS0 -> -> 1 `i `b ]
 "93
 [; ;Servos.c: 93:     }
-[e = _PSA -> -> 0 `i `b ]
+[e = _PS1 -> -> 1 `i `b ]
 "94
 [; ;Servos.c: 94: }
-[e = _INTCON -> -> 168 `i `uc ]
+[e = _PS2 -> -> 1 `i `b ]
 "95
-[e = _TMR0 -> _Valor_TMR0 `uc ]
+[e = _T0CS -> -> 0 `i `b ]
+"96
+[e = _PSA -> -> 0 `i `b ]
+"97
+[e = _INTCON -> -> 168 `i `uc ]
 "98
-[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
-"99
-[e = _ADIF -> -> 0 `i `b ]
-"100
-[e = . . _ADCON1bits 0 4 -> -> 0 `i `uc ]
+[e = _TMR0 -> _Valor_TMR0 `uc ]
 "101
-[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
 "102
-[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+[e = _ADIF -> -> 0 `i `b ]
 "103
-[e = . . _ADCON0bits 1 6 -> -> 0 `i `uc ]
+[e = . . _ADCON1bits 0 4 -> -> 0 `i `uc ]
 "104
-[e = . . _ADCON0bits 1 7 -> -> 1 `i `uc ]
+[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
 "105
-[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
+[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
 "106
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[e = . . _ADCON0bits 1 6 -> -> 0 `i `uc ]
 "107
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[e = . . _ADCON0bits 1 7 -> -> 1 `i `uc ]
+"108
+[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
+"109
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "110
-[e = _ANSEL -> -> 3 `i `uc ]
-"111
-[e = _ANSELH -> -> 0 `i `uc ]
-"112
-[e = _TRISA -> -> 255 `i `uc ]
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
 "113
-[e = _TRISC -> -> 0 `i `uc ]
+[e = _ANSEL -> -> 3 `i `uc ]
 "114
-[e = _TRISD -> -> 0 `i `uc ]
+[e = _ANSELH -> -> 0 `i `uc ]
 "115
-[e = _TRISE -> -> 0 `i `uc ]
+[e = _TRISA -> -> 255 `i `uc ]
+"116
+[e = _TRISC -> -> 0 `i `uc ]
+"117
+[e = _TRISD -> -> 0 `i `uc ]
 "118
-[e = _PORTA -> -> 0 `i `uc ]
-"119
-[e = _PORTB -> -> 0 `i `uc ]
-"120
-[e = _PORTC -> -> 0 `i `uc ]
+[e = _TRISE -> -> 0 `i `uc ]
 "121
-[e = _PORTD -> -> 0 `i `uc ]
+[e = _PORTA -> -> 0 `i `uc ]
 "122
-[e = _PORTE -> -> 0 `i `uc ]
+[e = _PORTB -> -> 0 `i `uc ]
+"123
+[e = _PORTC -> -> 0 `i `uc ]
+"124
+[e = _PORTD -> -> 0 `i `uc ]
 "125
-[e :U 149 ]
-{
-"126
-[e = _Valor_Servo_1 -> -> 148 `i `uc ]
-"127
-[e = _RD4 -> -> 1 `i `b ]
+[e = _PORTE -> -> 0 `i `uc ]
 "128
-[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e :U 150 ]
+{
 "129
-[e = _RD4 -> -> 0 `i `b ]
+[e = _RD1 -> -> 0 `i `b ]
 "130
-[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e = _Valor_Servo_1 -> -> 148 `i `uc ]
 "131
 }
-[e :U 148 ]
-[e $U 149  ]
-[e :U 150 ]
+[e :U 149 ]
+[e $U 150  ]
+[e :U 151 ]
 "132
-[e :UE 147 ]
+[e :UE 148 ]
 }

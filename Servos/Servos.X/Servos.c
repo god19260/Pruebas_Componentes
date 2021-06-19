@@ -42,7 +42,7 @@
 //------------------------------------------------------------------------------
 //********************* Declaraciones de variables *****************************
 char Valor_TMR0 = 100;
-char Contador_Servo_1;
+int Contador_Servo_1;
 char Valor_Servo_1;
 //------------------------------------------------------------------------------
 //***************************** Prototipos *************************************
@@ -69,12 +69,15 @@ void __interrupt() isr (void){
         T0IF = 0;
         TMR0 = Valor_TMR0;
         // Prueba servo 1
-        RD7 = 1;
-        while (Contador_Servo_1 <= Valor_Servo_1){ // max 198, min 98
-            Contador_Servo_1++;
+        if (Valor_Servo_1 == 200){
+            RD1 = 1;
         }
         Contador_Servo_1 = 0;
-        RD7=0;
+        RD7 = 1;
+        while (Contador_Servo_1 <= Valor_Servo_1){ // max 199, min 98 
+            Contador_Servo_1++;
+        }
+        RD7=0;        
         PIE1bits.ADIE = 1;
     } // Fin de interrupción timer0
 }    
@@ -123,11 +126,8 @@ void main(void) {
     
     //loop principal
     while(1){  
+        RD1 = 0;
         Valor_Servo_1 = 148;
-        RD4 = 1;
-        __delay_ms(300);
-        RD4 = 0;
-        __delay_ms(300);
     } // fin loop principal while 
 } // fin main
 
