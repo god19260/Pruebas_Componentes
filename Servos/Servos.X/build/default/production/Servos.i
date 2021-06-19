@@ -2534,6 +2534,7 @@ extern __bank0 __bit __timeout;
 char Valor_TMR0 = 100;
 int Contador_Servo_1;
 char Valor_Servo_1;
+char ADRESH_Servo_1;
 
 
 
@@ -2544,6 +2545,7 @@ void __attribute__((picinterrupt(("")))) isr (void){
     if (ADIF == 1){
         ADIF = 0;
         if (ADCON0bits.CHS == 0){
+            ADRESH_Servo_1 = ADRESH;
             ADCON0bits.CHS = 1;
         } else if(ADCON0bits.CHS == 1){
             ADCON0bits.CHS = 0;
@@ -2559,9 +2561,6 @@ void __attribute__((picinterrupt(("")))) isr (void){
         T0IF = 0;
         TMR0 = Valor_TMR0;
 
-        if (Valor_Servo_1 == 200){
-            RD1 = 1;
-        }
         Contador_Servo_1 = 0;
         RD7 = 1;
         while (Contador_Servo_1 <= Valor_Servo_1){
@@ -2616,7 +2615,6 @@ void main(void) {
 
 
     while(1){
-        RD1 = 0;
-        Valor_Servo_1 = 148;
+        Valor_Servo_1 = (ADRESH_Servo_1 -0)*(199-98)/(255-0)+98;
     }
 }
