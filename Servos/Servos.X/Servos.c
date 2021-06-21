@@ -4,7 +4,6 @@
  *
  */
 
-
 #include <xc.h>
 #define _XTAL_FREQ 8000000
 // PIC16F887 Configuration Bit Settings
@@ -42,9 +41,15 @@
 //------------------------------------------------------------------------------
 //********************* Declaraciones de variables *****************************
 char Valor_TMR0 = 100;
-int Contador_Servo_1;
+int  Contador_Servo_1;
+int  Contador_Servo_2;
+int  Contador_Servo_3;
 char Valor_Servo_1;
+char Valor_Servo_2;
+char Valor_Servo_3;
 char ADRESH_Servo_1;
+char ADRESH_Servo_2;
+char ADRESH_Servo_3;
 //------------------------------------------------------------------------------
 //***************************** Prototipos *************************************
 
@@ -58,6 +63,10 @@ void __interrupt() isr (void){
             ADRESH_Servo_1 = ADRESH;
             ADCON0bits.CHS = 1;
         } else if(ADCON0bits.CHS == 1){
+            ADRESH_Servo_2 = ADRESH;
+            ADCON0bits.CHS = 2;
+        } else if(ADCON0bits.CHS == 2){
+            ADRESH_Servo_3 = ADRESH;
             ADCON0bits.CHS = 0;
         }   
         __delay_us(50);
@@ -70,13 +79,28 @@ void __interrupt() isr (void){
         PIE1bits.ADIE = 0;
         T0IF = 0;
         TMR0 = Valor_TMR0;
-        // Prueba servo 1
+        // PWM
         Contador_Servo_1 = 0;
-        RD7 = 1;
+        Contador_Servo_2 = 0;
+        Contador_Servo_3 = 0;
+        // SERVO 1
+        RD0 = 1;
         while (Contador_Servo_1 <= Valor_Servo_1){ // max 199, min 98 
             Contador_Servo_1++;
         }
-        RD7=0;        
+        RD0=0;
+        // SERVO 2
+        RD1 = 1;
+        while (Contador_Servo_2 <= Valor_Servo_2){ // max 199, min 98 
+            Contador_Servo_2++;
+        }
+        RD1=0;
+        // SERVO 3
+        RD2 = 1;
+        while (Contador_Servo_3 <= Valor_Servo_3){ // max 199, min 98 
+            Contador_Servo_3++;
+        }
+        RD2=0;
         PIE1bits.ADIE = 1;
     } // Fin de interrupción timer0
 }    
@@ -109,7 +133,7 @@ void main(void) {
     ADCON0bits.GO = 1;
     
     // Configurar puertos
-    ANSEL  = 0b00000011;
+    ANSEL  = 0b00000111;
     ANSELH = 0;
     TRISA  = 0xff;  // Definir el puerto A como entradas
     TRISC  = 0;     // Definir el puerto C como salida
@@ -125,7 +149,9 @@ void main(void) {
     
     //loop principal
     while(1){  
-        Valor_Servo_1 = (ADRESH_Servo_1 -0)*(199-98)/(255-0)+98;
+        Valor_Servo_1 = (ADRESH_Servo_1-0)*(199-98)/(255-0)+98;
+        Valor_Servo_2 = (ADRESH_Servo_2-0)*(199-98)/(255-0)+98;
+        Valor_Servo_3 = (ADRESH_Servo_3-0)*(199-98)/(255-0)+98;
     } // fin loop principal while 
 } // fin main
 
