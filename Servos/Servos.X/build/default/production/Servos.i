@@ -13,6 +13,7 @@
 
 
 
+
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2493,7 +2494,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 7 "Servos.c" 2
+# 8 "Servos.c" 2
 
 
 
@@ -2530,22 +2531,61 @@ extern __bank0 __bit __timeout;
 
 
 
-char Valor_TMR0 = 100;
-int Contador_Servo_1;
-int Contador_Servo_2;
-int Contador_Servo_3;
-char Valor_Servo_1;
-char Valor_Servo_2;
-char Valor_Servo_3;
-char ADRESH_Servo_1;
-char ADRESH_Servo_2;
-char ADRESH_Servo_3;
+unsigned char Valor_TMR0 = 100;
+unsigned char Contador_Servos;
+unsigned char Valor_Servo_1;
+unsigned char Valor_Servo_2;
+unsigned char Valor_Servo_3;
+unsigned char ADRESH_Servo_1;
+unsigned char ADRESH_Servo_2;
+unsigned char ADRESH_Servo_3;
 
 
 
 
 
 void __attribute__((picinterrupt(("")))) isr (void){
+
+    if (T0IF == 1){
+
+        T0IF = 0;
+        TMR0 = Valor_TMR0;
+
+        Contador_Servos = 0;
+
+        RD0 = 1;
+        while (Contador_Servos <= Valor_Servo_1){
+            Contador_Servos++;
+            Contador_Servos++;
+            Contador_Servos--;
+            Contador_Servos++;
+            Contador_Servos--;
+        }
+        RD0=0;
+
+        Contador_Servos = 0;
+        RD1 = 1;
+        while (Contador_Servos <= Valor_Servo_2){
+            Contador_Servos++;
+            Contador_Servos++;
+            Contador_Servos--;
+            Contador_Servos++;
+            Contador_Servos--;
+        }
+        RD1=0;
+
+        Contador_Servos = 0;
+        RD2 = 1;
+        while (Contador_Servos <= Valor_Servo_3){
+            Contador_Servos++;
+            Contador_Servos++;
+            Contador_Servos--;
+            Contador_Servos++;
+            Contador_Servos--;
+        }
+        RD2=0;
+    }
+
 
     if (ADIF == 1){
         ADIF = 0;
@@ -2563,36 +2603,6 @@ void __attribute__((picinterrupt(("")))) isr (void){
         ADCON0bits.GO = 1;
     }
 
-
-    if (T0IF == 1){
-
-        PIE1bits.ADIE = 0;
-        T0IF = 0;
-        TMR0 = Valor_TMR0;
-
-        Contador_Servo_1 = 0;
-        Contador_Servo_2 = 0;
-        Contador_Servo_3 = 0;
-
-        RD0 = 1;
-        while (Contador_Servo_1 <= Valor_Servo_1){
-            Contador_Servo_1++;
-        }
-        RD0=0;
-
-        RD1 = 1;
-        while (Contador_Servo_2 <= Valor_Servo_2){
-            Contador_Servo_2++;
-        }
-        RD1=0;
-
-        RD2 = 1;
-        while (Contador_Servo_3 <= Valor_Servo_3){
-            Contador_Servo_3++;
-        }
-        RD2=0;
-        PIE1bits.ADIE = 1;
-    }
 }
 
 void main(void) {
@@ -2639,8 +2649,8 @@ void main(void) {
 
 
     while(1){
-        Valor_Servo_1 = (ADRESH_Servo_1-0)*(199-98)/(255-0)+98;
-        Valor_Servo_2 = (ADRESH_Servo_2-0)*(199-98)/(255-0)+98;
-        Valor_Servo_3 = (ADRESH_Servo_3-0)*(199-98)/(255-0)+98;
+        Valor_Servo_1 = (ADRESH_Servo_1-0)*(217-42)/(255-0)+42;
+        Valor_Servo_2 = (ADRESH_Servo_2-0)*(217-42)/(255-0)+42;
+        Valor_Servo_3 = (ADRESH_Servo_3-0)*(217-42)/(255-0)+42;
     }
 }

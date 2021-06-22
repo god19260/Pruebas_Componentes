@@ -4,6 +4,7 @@
  *
  */
 
+
 #include <xc.h>
 #define _XTAL_FREQ 8000000
 // PIC16F887 Configuration Bit Settings
@@ -40,22 +41,61 @@
 
 //------------------------------------------------------------------------------
 //********************* Declaraciones de variables *****************************
-char Valor_TMR0 = 100;
-int  Contador_Servo_1;
-int  Contador_Servo_2;
-int  Contador_Servo_3;
-char Valor_Servo_1;
-char Valor_Servo_2;
-char Valor_Servo_3;
-char ADRESH_Servo_1;
-char ADRESH_Servo_2;
-char ADRESH_Servo_3;
+unsigned char Valor_TMR0 = 100;
+unsigned char Contador_Servos;
+unsigned char Valor_Servo_1;
+unsigned char Valor_Servo_2;
+unsigned char Valor_Servo_3;
+unsigned char ADRESH_Servo_1;
+unsigned char ADRESH_Servo_2;
+unsigned char ADRESH_Servo_3;
 //------------------------------------------------------------------------------
 //***************************** Prototipos *************************************
 
 //------------------------------------------------------------------------------
 //*************************** Interrupciones ***********************************
 void __interrupt() isr (void){
+    // Interrupcion del timer0
+    if (T0IF == 1){
+        // Interrupcion cada 20ms: tmr0 100, prescaler 256, 8MHz de oscilador
+        T0IF = 0;
+        TMR0 = Valor_TMR0;
+        // PWM
+        Contador_Servos = 0;
+        // SERVO 1
+        RD0 = 1;
+        while (Contador_Servos <= Valor_Servo_1){ // max 217, min 42 
+            Contador_Servos++; // inicia en 16.5us, tiempo 5.5 us (char)
+            Contador_Servos++; // inicia en 22.0us, tiempo 8 us (int)        
+            Contador_Servos--;            
+            Contador_Servos++;
+            Contador_Servos--;
+        }
+        RD0=0;
+        // SERVO 2
+        Contador_Servos = 0;
+        RD1 = 1;
+        while (Contador_Servos <= Valor_Servo_2){ // max 199, min 98 
+            Contador_Servos++; // inicia en 16.5us, tiempo 5.5 us (char)
+            Contador_Servos++; // inicia en 22.0us, tiempo 8 us (int)        
+            Contador_Servos--;            
+            Contador_Servos++;
+            Contador_Servos--;
+        }
+        RD1=0;
+        // SERVO 3
+        Contador_Servos = 0;
+        RD2 = 1;
+        while (Contador_Servos <= Valor_Servo_3){ // max 199, min 98 
+            Contador_Servos++; // inicia en 16.5us, tiempo 5.5 us (char)
+            Contador_Servos++; // inicia en 22.0us, tiempo 8 us (int)        
+            Contador_Servos--;            
+            Contador_Servos++;
+            Contador_Servos--;
+        }
+        RD2=0;   
+    } // Fin de interrupción timer0
+    
     // Interrupcion del ADC module
     if (ADIF == 1){
         ADIF = 0;
@@ -73,36 +113,6 @@ void __interrupt() isr (void){
         ADCON0bits.GO = 1; 
     }
     
-    // Interrupcion del timer0
-    if (T0IF == 1){
-        // Interrupcion cada 20ms: tmr0 100, prescaler 256, 8MHz de oscilador
-        PIE1bits.ADIE = 0;
-        T0IF = 0;
-        TMR0 = Valor_TMR0;
-        // PWM
-        Contador_Servo_1 = 0;
-        Contador_Servo_2 = 0;
-        Contador_Servo_3 = 0;
-        // SERVO 1
-        RD0 = 1;
-        while (Contador_Servo_1 <= Valor_Servo_1){ // max 199, min 98 
-            Contador_Servo_1++;
-        }
-        RD0=0;
-        // SERVO 2
-        RD1 = 1;
-        while (Contador_Servo_2 <= Valor_Servo_2){ // max 199, min 98 
-            Contador_Servo_2++;
-        }
-        RD1=0;
-        // SERVO 3
-        RD2 = 1;
-        while (Contador_Servo_3 <= Valor_Servo_3){ // max 199, min 98 
-            Contador_Servo_3++;
-        }
-        RD2=0;
-        PIE1bits.ADIE = 1;
-    } // Fin de interrupción timer0
 }    
 
 void main(void) {
@@ -149,9 +159,9 @@ void main(void) {
     
     //loop principal
     while(1){  
-        Valor_Servo_1 = (ADRESH_Servo_1-0)*(199-98)/(255-0)+98;
-        Valor_Servo_2 = (ADRESH_Servo_2-0)*(199-98)/(255-0)+98;
-        Valor_Servo_3 = (ADRESH_Servo_3-0)*(199-98)/(255-0)+98;
+        Valor_Servo_1 = (ADRESH_Servo_1-0)*(217-42)/(255-0)+42;
+        Valor_Servo_2 = (ADRESH_Servo_2-0)*(217-42)/(255-0)+42;
+        Valor_Servo_3 = (ADRESH_Servo_3-0)*(217-42)/(255-0)+42;
     } // fin loop principal while 
 } // fin main
 
