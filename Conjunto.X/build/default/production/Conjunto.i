@@ -2545,11 +2545,13 @@ unsigned char USART_Servo_2 = 127;
 unsigned char USART_Servo_3 = 127;
 unsigned char USART_Num_Servo;
 unsigned char USART_Receptor;
-unsigned char Control = 1;
+unsigned char Control = 0;
 
 
 void USART_SERVOS(void);
 void Regla_3(void);
+void Menu(void);
+void Texto(char texto[]);
 
 
 void __attribute__((picinterrupt(("")))) isr (void){
@@ -2619,18 +2621,36 @@ void __attribute__((picinterrupt(("")))) isr (void){
         USART_Receptor = RCREG;
         if (RCREG == '1'){
             USART_Num_Servo = 1;
+            if (Control == 1){
+                Texto("\r");
+                Texto("SERVO 1: W Incrementar, Q Decrementar \r");
+                Menu();
+            }
         } else if(RCREG == '2'){
             USART_Num_Servo = 2;
+            if (Control == 1){
+                Texto("\r");
+                Texto("SERVO 2: W Incrementar, Q Decrementar \r");
+                Menu();
+            }
         } else if(RCREG == '3'){
             USART_Num_Servo = 3;
+            if (Control == 1){
+                Texto("\r");
+                Texto("SERVO 3: W Incrementar, Q Decrementar \r");
+                Menu();
+            }
         } else if (RCREG == '4'){
             Control = 0;
         } else if (RCREG == '5'){
             Control = 1;
+            Texto("\r");
+            Texto("SERVO a seleccionar: (1) (2) (3): \r");
             USART_Servo_1 = ADRESH_Servo_1;
             USART_Servo_2 = ADRESH_Servo_2;
             USART_Servo_3 = ADRESH_Servo_3;
         }
+
     }
 }
 
@@ -2688,7 +2708,8 @@ void main(void) {
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
-
+    Texto("Control default es por ADC \r");
+    Menu();
 
 
     while(1){
@@ -2744,4 +2765,16 @@ void Regla_3(void){
         Valor_Servo_3 = (USART_Servo_3-0)*(217-42)/(255-0)+42;
     }
 
+}
+void Texto(char texto[]){
+    char i = 0;
+    while(texto[i] != '\0'){
+        TXREG = texto[i];
+        i++;
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+    }
+}
+void Menu(void){
+    Texto("Cambiar control: Control con USART (5), Control con ADC (4) \r");
+    Texto("\r");
 }

@@ -55,8 +55,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1140
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
 [v _RCREG `Vuc ~T0 @X0 0 e@26 ]
+"64 Conjunto.c
+[; ;Conjunto.c: 64:             Contador_Servos++;
+[v _Texto `(v ~T0 @X0 0 ef1`*uc ]
+"63
+[; ;Conjunto.c: 63:             Contador_Servos--;
+[v _Menu `(v ~T0 @X0 0 ef ]
 [p mainexit ]
-"3956
+"3956 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3956: extern volatile __bit IRCF0 __attribute__((address(0x47C)));
 [v _IRCF0 `Vb ~T0 @X0 0 e@1148 ]
 "3959
@@ -165,11 +171,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 414: extern volatile unsigned char PORTE __attribute__((address(0x009)));
 [v _PORTE `Vuc ~T0 @X0 0 e@9 ]
 "61 Conjunto.c
-[; ;Conjunto.c: 61:             Contador_Servos--;
+[; ;Conjunto.c: 61:             Contador_Servos++;
 [v _USART_SERVOS `(v ~T0 @X0 0 ef ]
 "62
 [; ;Conjunto.c: 62:             Contador_Servos++;
 [v _Regla_3 `(v ~T0 @X0 0 ef ]
+"1133 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1133: extern volatile unsigned char TXREG __attribute__((address(0x019)));
+[v _TXREG `Vuc ~T0 @X0 0 e@25 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -411,7 +420,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Conjunto.c: 18: unsigned char USART_Receptor;
 [p x WDTE  =  OFF        ]
 "19
-[; ;Conjunto.c: 19: unsigned char Control = 1;
+[; ;Conjunto.c: 19: unsigned char Control = 0;
 [p x PWRTE  =  OFF       ]
 "20
 [; ;Conjunto.c: 20: 
@@ -420,10 +429,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Conjunto.c: 22: void USART_SERVOS(void);
 [p x CP  =  OFF          ]
 "24
-[; ;Conjunto.c: 24: 
+[; ;Conjunto.c: 24: void Menu(void);
 [p x CPD  =  OFF         ]
 "26
-[; ;Conjunto.c: 26: void __attribute__((picinterrupt(("")))) isr (void){
+[; ;Conjunto.c: 26: 
 [p x BOREN  =  OFF       ]
 "27
 [; ;Conjunto.c: 27: 
@@ -432,34 +441,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Conjunto.c: 29: 
 [p x FCMEN  =  OFF       ]
 "31
-[; ;Conjunto.c: 31:         TMR0 = Valor_TMR0;
+[; ;Conjunto.c: 31: 
 [p x LVP  =  OFF          ]
 "35
-[; ;Conjunto.c: 35:         RD0 = 1;
+[; ;Conjunto.c: 35:         Contador_Servos = 0;
 [p x BOR4V  =  BOR40V    ]
 "37
-[; ;Conjunto.c: 37:             Contador_Servos++;
+[; ;Conjunto.c: 37:         RD0 = 1;
 [p x WRT  =  OFF         ]
 "45
-[; ;Conjunto.c: 45:         Contador_Servos = 0;
+[; ;Conjunto.c: 45:         RD0=0;
 [v _Valor_TMR0 `uc ~T0 @X0 1 e ]
 [i _Valor_TMR0
 -> -> 100 `i `uc
 ]
 "46
-[; ;Conjunto.c: 46:         RD1 = 1;
+[; ;Conjunto.c: 46: 
 [v _Contador_Servos `uc ~T0 @X0 1 e ]
 "47
-[; ;Conjunto.c: 47:         while (Contador_Servos <= Valor_Servo_2){
+[; ;Conjunto.c: 47:         Contador_Servos = 0;
 [v _Valor_Servo_1 `uc ~T0 @X0 1 e ]
 "48
-[; ;Conjunto.c: 48:             Contador_Servos++;
+[; ;Conjunto.c: 48:         RD1 = 1;
 [v _Valor_Servo_2 `uc ~T0 @X0 1 e ]
 "49
-[; ;Conjunto.c: 49:             Contador_Servos++;
+[; ;Conjunto.c: 49:         while (Contador_Servos <= Valor_Servo_2){
 [v _Valor_Servo_3 `uc ~T0 @X0 1 e ]
 "50
-[; ;Conjunto.c: 50:             Contador_Servos--;
+[; ;Conjunto.c: 50:             Contador_Servos++;
 [v _ADRESH_Servo_1 `uc ~T0 @X0 1 e ]
 "51
 [; ;Conjunto.c: 51:             Contador_Servos++;
@@ -468,603 +477,729 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Conjunto.c: 52:             Contador_Servos--;
 [v _ADRESH_Servo_3 `uc ~T0 @X0 1 e ]
 "53
-[; ;Conjunto.c: 53:         }
+[; ;Conjunto.c: 53:             Contador_Servos++;
 [v _USART_Servo_1 `uc ~T0 @X0 1 e ]
 [i _USART_Servo_1
 -> -> 127 `i `uc
 ]
 "54
-[; ;Conjunto.c: 54:         RD1=0;
+[; ;Conjunto.c: 54:             Contador_Servos--;
 [v _USART_Servo_2 `uc ~T0 @X0 1 e ]
 [i _USART_Servo_2
 -> -> 127 `i `uc
 ]
 "55
-[; ;Conjunto.c: 55: 
+[; ;Conjunto.c: 55:         }
 [v _USART_Servo_3 `uc ~T0 @X0 1 e ]
 [i _USART_Servo_3
 -> -> 127 `i `uc
 ]
 "56
-[; ;Conjunto.c: 56:         Contador_Servos = 0;
+[; ;Conjunto.c: 56:         RD1=0;
 [v _USART_Num_Servo `uc ~T0 @X0 1 e ]
 "57
-[; ;Conjunto.c: 57:         RD2 = 1;
+[; ;Conjunto.c: 57: 
 [v _USART_Receptor `uc ~T0 @X0 1 e ]
 "58
-[; ;Conjunto.c: 58:         while (Contador_Servos <= Valor_Servo_3){
+[; ;Conjunto.c: 58:         Contador_Servos = 0;
 [v _Control `uc ~T0 @X0 1 e ]
 [i _Control
--> -> 1 `i `uc
+-> -> 0 `i `uc
 ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"65
-[; ;Conjunto.c: 65:         RD2=0;
+"67
+[; ;Conjunto.c: 67:         RD2=0;
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"67
-[; ;Conjunto.c: 67: 
+"69
+[; ;Conjunto.c: 69: 
 [e $ ! == -> _T0IF `i -> 1 `i 139  ]
 {
-"69
-[; ;Conjunto.c: 69:     if (ADIF == 1){
+"71
+[; ;Conjunto.c: 71:     if (ADIF == 1){
 [e = _T0IF -> -> 0 `i `b ]
-"70
-[; ;Conjunto.c: 70:         ADIF = 0;
-[e = _TMR0 _Valor_TMR0 ]
 "72
-[; ;Conjunto.c: 72:             ADRESH_Servo_1 = ADRESH;
-[e = _Contador_Servos -> -> 0 `i `uc ]
+[; ;Conjunto.c: 72:         ADIF = 0;
+[e = _TMR0 _Valor_TMR0 ]
 "74
-[; ;Conjunto.c: 74:         } else if(ADCON0bits.CHS == 1){
+[; ;Conjunto.c: 74:             ADRESH_Servo_1 = ADRESH;
+[e = _Contador_Servos -> -> 0 `i `uc ]
+"76
+[; ;Conjunto.c: 76:         } else if(ADCON0bits.CHS == 1){
 [e = _RD0 -> -> 1 `i `b ]
-"75
-[; ;Conjunto.c: 75:             ADRESH_Servo_2 = ADRESH;
+"77
+[; ;Conjunto.c: 77:             ADRESH_Servo_2 = ADRESH;
 [e $U 140  ]
 [e :U 141 ]
 {
-"76
-[; ;Conjunto.c: 76:             ADCON0bits.CHS = 2;
-[e ++ _Contador_Servos -> -> 1 `i `uc ]
-"77
-[; ;Conjunto.c: 77:         } else if(ADCON0bits.CHS == 2){
-[e ++ _Contador_Servos -> -> 1 `i `uc ]
 "78
-[; ;Conjunto.c: 78:             ADRESH_Servo_3 = ADRESH;
-[e -- _Contador_Servos -> -> 1 `i `uc ]
+[; ;Conjunto.c: 78:             ADCON0bits.CHS = 2;
+[e ++ _Contador_Servos -> -> 1 `i `uc ]
 "79
-[; ;Conjunto.c: 79:             ADCON0bits.CHS = 0;
+[; ;Conjunto.c: 79:         } else if(ADCON0bits.CHS == 2){
 [e ++ _Contador_Servos -> -> 1 `i `uc ]
 "80
-[; ;Conjunto.c: 80:         }
+[; ;Conjunto.c: 80:             ADRESH_Servo_3 = ADRESH;
 [e -- _Contador_Servos -> -> 1 `i `uc ]
 "81
-[; ;Conjunto.c: 81:         _delay((unsigned long)((50)*(8000000/4000000.0)));
+[; ;Conjunto.c: 81:             ADCON0bits.CHS = 0;
+[e ++ _Contador_Servos -> -> 1 `i `uc ]
+"82
+[; ;Conjunto.c: 82:         }
+[e -- _Contador_Servos -> -> 1 `i `uc ]
+"83
+[; ;Conjunto.c: 83:         _delay((unsigned long)((50)*(8000000/4000000.0)));
 }
 [e :U 140 ]
-"75
-[; ;Conjunto.c: 75:             ADRESH_Servo_2 = ADRESH;
+"77
+[; ;Conjunto.c: 77:             ADRESH_Servo_2 = ADRESH;
 [e $ <= -> _Contador_Servos `i -> _Valor_Servo_1 `i 141  ]
 [e :U 142 ]
-"82
-[; ;Conjunto.c: 82:         ADCON0bits.GO = 1;
-[e = _RD0 -> -> 0 `i `b ]
 "84
-[; ;Conjunto.c: 84: 
-[e = _Contador_Servos -> -> 0 `i `uc ]
-"85
-[; ;Conjunto.c: 85: 
-[e = _RD1 -> -> 1 `i `b ]
+[; ;Conjunto.c: 84:         ADCON0bits.GO = 1;
+[e = _RD0 -> -> 0 `i `b ]
 "86
-[; ;Conjunto.c: 86:     if (RCIF == 1){
+[; ;Conjunto.c: 86: 
+[e = _Contador_Servos -> -> 0 `i `uc ]
+"87
+[; ;Conjunto.c: 87: 
+[e = _RD1 -> -> 1 `i `b ]
+"88
+[; ;Conjunto.c: 88:     if (RCIF == 1){
 [e $U 143  ]
 [e :U 144 ]
 {
-"87
-[; ;Conjunto.c: 87: 
-[e ++ _Contador_Servos -> -> 1 `i `uc ]
-"88
-[; ;Conjunto.c: 88: 
-[e ++ _Contador_Servos -> -> 1 `i `uc ]
 "89
-[; ;Conjunto.c: 89:         RCIF = 0;
-[e -- _Contador_Servos -> -> 1 `i `uc ]
+[; ;Conjunto.c: 89: 
+[e ++ _Contador_Servos -> -> 1 `i `uc ]
 "90
-[; ;Conjunto.c: 90:         USART_Receptor = RCREG;
+[; ;Conjunto.c: 90: 
 [e ++ _Contador_Servos -> -> 1 `i `uc ]
 "91
-[; ;Conjunto.c: 91:         if (RCREG == '1'){
+[; ;Conjunto.c: 91:         RCIF = 0;
 [e -- _Contador_Servos -> -> 1 `i `uc ]
 "92
-[; ;Conjunto.c: 92:             USART_Num_Servo = 1;
+[; ;Conjunto.c: 92:         USART_Receptor = RCREG;
+[e ++ _Contador_Servos -> -> 1 `i `uc ]
+"93
+[; ;Conjunto.c: 93:         if (RCREG == '1'){
+[e -- _Contador_Servos -> -> 1 `i `uc ]
+"94
+[; ;Conjunto.c: 94:             USART_Num_Servo = 1;
 }
 [e :U 143 ]
-"86
-[; ;Conjunto.c: 86:     if (RCIF == 1){
+"88
+[; ;Conjunto.c: 88:     if (RCIF == 1){
 [e $ <= -> _Contador_Servos `i -> _Valor_Servo_2 `i 144  ]
 [e :U 145 ]
-"93
-[; ;Conjunto.c: 93:         } else if(RCREG == '2'){
-[e = _RD1 -> -> 0 `i `b ]
 "95
-[; ;Conjunto.c: 95:         } else if(RCREG == '3'){
-[e = _Contador_Servos -> -> 0 `i `uc ]
-"96
-[; ;Conjunto.c: 96:             USART_Num_Servo = 3;
-[e = _RD2 -> -> 1 `i `b ]
+[; ;Conjunto.c: 95:             if (Control == 1){
+[e = _RD1 -> -> 0 `i `b ]
 "97
-[; ;Conjunto.c: 97:         } else if (RCREG == '4'){
+[; ;Conjunto.c: 97:                 Texto("SERVO 1: W Incrementar, Q Decrementar \r");
+[e = _Contador_Servos -> -> 0 `i `uc ]
+"98
+[; ;Conjunto.c: 98:                 Menu();
+[e = _RD2 -> -> 1 `i `b ]
+"99
+[; ;Conjunto.c: 99:             }
 [e $U 146  ]
 [e :U 147 ]
 {
-"98
-[; ;Conjunto.c: 98:             Control = 0;
-[e ++ _Contador_Servos -> -> 1 `i `uc ]
-"99
-[; ;Conjunto.c: 99:         } else if (RCREG == '5'){
-[e ++ _Contador_Servos -> -> 1 `i `uc ]
 "100
-[; ;Conjunto.c: 100:             Control = 1;
-[e -- _Contador_Servos -> -> 1 `i `uc ]
+[; ;Conjunto.c: 100:         } else if(RCREG == '2'){
+[e ++ _Contador_Servos -> -> 1 `i `uc ]
 "101
-[; ;Conjunto.c: 101:             USART_Servo_1 = ADRESH_Servo_1;
+[; ;Conjunto.c: 101:             USART_Num_Servo = 2;
 [e ++ _Contador_Servos -> -> 1 `i `uc ]
 "102
-[; ;Conjunto.c: 102:             USART_Servo_2 = ADRESH_Servo_2;
+[; ;Conjunto.c: 102:             if (Control == 1){
 [e -- _Contador_Servos -> -> 1 `i `uc ]
 "103
-[; ;Conjunto.c: 103:             USART_Servo_3 = ADRESH_Servo_3;
+[; ;Conjunto.c: 103:                 Texto("\r");
+[e ++ _Contador_Servos -> -> 1 `i `uc ]
+"104
+[; ;Conjunto.c: 104:                 Texto("SERVO 2: W Incrementar, Q Decrementar \r");
+[e -- _Contador_Servos -> -> 1 `i `uc ]
+"105
+[; ;Conjunto.c: 105:                 Menu();
 }
 [e :U 146 ]
-"97
-[; ;Conjunto.c: 97:         } else if (RCREG == '4'){
+"99
+[; ;Conjunto.c: 99:             }
 [e $ <= -> _Contador_Servos `i -> _Valor_Servo_3 `i 147  ]
 [e :U 148 ]
-"104
-[; ;Conjunto.c: 104:         }
+"106
+[; ;Conjunto.c: 106:             }
 [e = _RD2 -> -> 0 `i `b ]
-"105
-[; ;Conjunto.c: 105:     }
+"107
+[; ;Conjunto.c: 107:         } else if(RCREG == '3'){
 }
 [e :U 139 ]
-"108
-[; ;Conjunto.c: 108: void main(void) {
+"110
+[; ;Conjunto.c: 110:                 Texto("\r");
 [e $ ! == -> _ADIF `i -> 1 `i 149  ]
 {
-"109
-[; ;Conjunto.c: 109: 
+"111
+[; ;Conjunto.c: 111:                 Texto("SERVO 3: W Incrementar, Q Decrementar \r");
 [e = _ADIF -> -> 0 `i `b ]
-"110
-[; ;Conjunto.c: 110: 
+"112
+[; ;Conjunto.c: 112:                 Menu();
 [e $ ! == -> . . _ADCON0bits 0 2 `i -> 0 `i 150  ]
 {
-"111
-[; ;Conjunto.c: 111: 
-[e = _ADRESH_Servo_1 _ADRESH ]
-"112
-[; ;Conjunto.c: 112:     IRCF0 = 1;
-[e = . . _ADCON0bits 0 2 -> -> 1 `i `uc ]
 "113
-[; ;Conjunto.c: 113:     IRCF1 = 1;
+[; ;Conjunto.c: 113:             }
+[e = _ADRESH_Servo_1 _ADRESH ]
+"114
+[; ;Conjunto.c: 114:         } else if (RCREG == '4'){
+[e = . . _ADCON0bits 0 2 -> -> 1 `i `uc ]
+"115
+[; ;Conjunto.c: 115:             Control = 0;
 }
 [e $U 151  ]
 [e :U 150 ]
 [e $ ! == -> . . _ADCON0bits 0 2 `i -> 1 `i 152  ]
 {
-"114
-[; ;Conjunto.c: 114:     IRCF2 = 1;
-[e = _ADRESH_Servo_2 _ADRESH ]
-"115
-[; ;Conjunto.c: 115: 
-[e = . . _ADCON0bits 0 2 -> -> 2 `i `uc ]
 "116
-[; ;Conjunto.c: 116: 
+[; ;Conjunto.c: 116:         } else if (RCREG == '5'){
+[e = _ADRESH_Servo_2 _ADRESH ]
+"117
+[; ;Conjunto.c: 117:             Control = 1;
+[e = . . _ADCON0bits 0 2 -> -> 2 `i `uc ]
+"118
+[; ;Conjunto.c: 118:             Texto("\r");
 }
 [e $U 153  ]
 [e :U 152 ]
 [e $ ! == -> . . _ADCON0bits 0 2 `i -> 2 `i 154  ]
 {
-"117
-[; ;Conjunto.c: 117:     TXEN = 1;
-[e = _ADRESH_Servo_3 _ADRESH ]
-"118
-[; ;Conjunto.c: 118:     SYNC = 0;
-[e = . . _ADCON0bits 0 2 -> -> 0 `i `uc ]
 "119
-[; ;Conjunto.c: 119:     SPEN = 1;
+[; ;Conjunto.c: 119:             Texto("SERVO a seleccionar: (1) (2) (3): \r");
+[e = _ADRESH_Servo_3 _ADRESH ]
+"120
+[; ;Conjunto.c: 120:             USART_Servo_1 = ADRESH_Servo_1;
+[e = . . _ADCON0bits 0 2 -> -> 0 `i `uc ]
+"121
+[; ;Conjunto.c: 121:             USART_Servo_2 = ADRESH_Servo_2;
 }
 [e :U 154 ]
 [e :U 153 ]
 [e :U 151 ]
-"120
-[; ;Conjunto.c: 120: 
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"121
-[; ;Conjunto.c: 121: 
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
 "122
-[; ;Conjunto.c: 122:     CREN = 1;
+[; ;Conjunto.c: 122:             USART_Servo_3 = ADRESH_Servo_3;
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"123
+[; ;Conjunto.c: 123:         }
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"124
+[; ;Conjunto.c: 124: 
 }
 [e :U 149 ]
-"125
-[; ;Conjunto.c: 125:     SPBRG=12;
+"127
+[; ;Conjunto.c: 127: 
 [e $ ! == -> _RCIF `i -> 1 `i 155  ]
 {
-"128
-[; ;Conjunto.c: 128:     PS0 = 1;
-[e = _RCIF -> -> 0 `i `b ]
-"129
-[; ;Conjunto.c: 129:     PS1 = 1;
-[e = _USART_Receptor _RCREG ]
 "130
-[; ;Conjunto.c: 130:     PS2 = 1;
+[; ;Conjunto.c: 130: 
+[e = _RCIF -> -> 0 `i `b ]
+"131
+[; ;Conjunto.c: 131: 
+[e = _USART_Receptor _RCREG ]
+"132
+[; ;Conjunto.c: 132:     IRCF0 = 1;
 [e $ ! == -> _RCREG `ui -> 49 `ui 156  ]
 {
-"131
-[; ;Conjunto.c: 131:     T0CS = 0;
-[e = _USART_Num_Servo -> -> 1 `i `uc ]
-"132
-[; ;Conjunto.c: 132:     PSA = 0;
-}
-[e $U 157  ]
-[e :U 156 ]
-[e $ ! == -> _RCREG `ui -> 50 `ui 158  ]
-{
 "133
-[; ;Conjunto.c: 133:     INTCON = 0b10101000;
-[e = _USART_Num_Servo -> -> 2 `i `uc ]
+[; ;Conjunto.c: 133:     IRCF1 = 1;
+[e = _USART_Num_Servo -> -> 1 `i `uc ]
 "134
-[; ;Conjunto.c: 134:     TMR0 = Valor_TMR0;
-}
-[e $U 159  ]
-[e :U 158 ]
-[e $ ! == -> _RCREG `ui -> 51 `ui 160  ]
+[; ;Conjunto.c: 134:     IRCF2 = 1;
+[e $ ! == -> _Control `i -> 1 `i 157  ]
 {
 "135
 [; ;Conjunto.c: 135: 
-[e = _USART_Num_Servo -> -> 3 `i `uc ]
+[e ( _Texto (1 :s 1C ]
 "136
 [; ;Conjunto.c: 136: 
+[e ( _Texto (1 :s 2C ]
+"137
+[; ;Conjunto.c: 137:     TXEN = 1;
+[e ( _Menu ..  ]
+"138
+[; ;Conjunto.c: 138:     SYNC = 0;
+}
+[e :U 157 ]
+"139
+[; ;Conjunto.c: 139:     SPEN = 1;
+}
+[e $U 158  ]
+[e :U 156 ]
+[e $ ! == -> _RCREG `ui -> 50 `ui 159  ]
+{
+"140
+[; ;Conjunto.c: 140: 
+[e = _USART_Num_Servo -> -> 2 `i `uc ]
+"141
+[; ;Conjunto.c: 141: 
+[e $ ! == -> _Control `i -> 1 `i 160  ]
+{
+"142
+[; ;Conjunto.c: 142:     CREN = 1;
+[e ( _Texto (1 :s 3C ]
+"143
+[; ;Conjunto.c: 143:     PIE1bits.RCIE = 1;
+[e ( _Texto (1 :s 4C ]
+"144
+[; ;Conjunto.c: 144:     PIR1bits.RCIF = 0;
+[e ( _Menu ..  ]
+"145
+[; ;Conjunto.c: 145:     SPBRG=12;
+}
+[e :U 160 ]
+"146
+[; ;Conjunto.c: 146: 
 }
 [e $U 161  ]
-[e :U 160 ]
-[e $ ! == -> _RCREG `ui -> 52 `ui 162  ]
-{
-"137
-[; ;Conjunto.c: 137:     PIE1bits.ADIE = 1;
-[e = _Control -> -> 0 `i `uc ]
-"138
-[; ;Conjunto.c: 138:     ADIF = 0;
-}
-[e $U 163  ]
-[e :U 162 ]
-[e $ ! == -> _RCREG `ui -> 53 `ui 164  ]
-{
-"139
-[; ;Conjunto.c: 139:     ADCON1bits.ADFM = 0;
-[e = _Control -> -> 1 `i `uc ]
-"140
-[; ;Conjunto.c: 140:     ADCON1bits.VCFG0 = 0;
-[e = _USART_Servo_1 _ADRESH_Servo_1 ]
-"141
-[; ;Conjunto.c: 141:     ADCON1bits.VCFG0 = 0;
-[e = _USART_Servo_2 _ADRESH_Servo_2 ]
-"142
-[; ;Conjunto.c: 142:     ADCON0bits.ADCS0 = 0;
-[e = _USART_Servo_3 _ADRESH_Servo_3 ]
-"143
-[; ;Conjunto.c: 143:     ADCON0bits.ADCS1 = 1;
-}
-[e :U 164 ]
-[e :U 163 ]
-[e :U 161 ]
 [e :U 159 ]
-[e :U 157 ]
-"144
-[; ;Conjunto.c: 144:     ADCON0bits.ADON = 1;
+[e $ ! == -> _RCREG `ui -> 51 `ui 162  ]
+{
+"147
+[; ;Conjunto.c: 147: 
+[e = _USART_Num_Servo -> -> 3 `i `uc ]
+"148
+[; ;Conjunto.c: 148:     PS0 = 1;
+[e $ ! == -> _Control `i -> 1 `i 163  ]
+{
+"149
+[; ;Conjunto.c: 149:     PS1 = 1;
+[e ( _Texto (1 :s 5C ]
+"150
+[; ;Conjunto.c: 150:     PS2 = 1;
+[e ( _Texto (1 :s 6C ]
+"151
+[; ;Conjunto.c: 151:     T0CS = 0;
+[e ( _Menu ..  ]
+"152
+[; ;Conjunto.c: 152:     PSA = 0;
+}
+[e :U 163 ]
+"153
+[; ;Conjunto.c: 153:     INTCON = 0b10101000;
+}
+[e $U 164  ]
+[e :U 162 ]
+[e $ ! == -> _RCREG `ui -> 52 `ui 165  ]
+{
+"154
+[; ;Conjunto.c: 154:     TMR0 = Valor_TMR0;
+[e = _Control -> -> 0 `i `uc ]
+"155
+[; ;Conjunto.c: 155: 
+}
+[e $U 166  ]
+[e :U 165 ]
+[e $ ! == -> _RCREG `ui -> 53 `ui 167  ]
+{
+"156
+[; ;Conjunto.c: 156: 
+[e = _Control -> -> 1 `i `uc ]
+"157
+[; ;Conjunto.c: 157:     PIE1bits.ADIE = 1;
+[e ( _Texto (1 :s 7C ]
+"158
+[; ;Conjunto.c: 158:     ADIF = 0;
+[e ( _Texto (1 :s 8C ]
+"159
+[; ;Conjunto.c: 159:     ADCON1bits.ADFM = 0;
+[e = _USART_Servo_1 _ADRESH_Servo_1 ]
+"160
+[; ;Conjunto.c: 160:     ADCON1bits.VCFG0 = 0;
+[e = _USART_Servo_2 _ADRESH_Servo_2 ]
+"161
+[; ;Conjunto.c: 161:     ADCON1bits.VCFG0 = 0;
+[e = _USART_Servo_3 _ADRESH_Servo_3 ]
+"162
+[; ;Conjunto.c: 162:     ADCON0bits.ADCS0 = 0;
+}
+[e :U 167 ]
+[e :U 166 ]
+[e :U 164 ]
+[e :U 161 ]
+[e :U 158 ]
+"164
+[; ;Conjunto.c: 164:     ADCON0bits.ADON = 1;
 }
 [e :U 155 ]
-"145
-[; ;Conjunto.c: 145:     _delay((unsigned long)((50)*(8000000/4000000.0)));
+"165
+[; ;Conjunto.c: 165:     _delay((unsigned long)((50)*(8000000/4000000.0)));
 [e :UE 138 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"147
-[; ;Conjunto.c: 147: 
+"167
+[; ;Conjunto.c: 167: 
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"151
-[; ;Conjunto.c: 151:     TRISA = 0xff;
-[e = _IRCF0 -> -> 1 `i `b ]
-"152
-[; ;Conjunto.c: 152:     TRISB = 0;
-[e = _IRCF1 -> -> 1 `i `b ]
-"153
-[; ;Conjunto.c: 153:     TRISD = 0;
-[e = _IRCF2 -> -> 1 `i `b ]
-"156
-[; ;Conjunto.c: 156: 
-[e = _TXEN -> -> 1 `i `b ]
-"157
-[; ;Conjunto.c: 157:     PORTA = 0;
-[e = _SYNC -> -> 0 `i `b ]
-"158
-[; ;Conjunto.c: 158:     PORTB = 0;
-[e = _SPEN -> -> 1 `i `b ]
-"161
-[; ;Conjunto.c: 161:     PORTE = 0;
-[e = _CREN -> -> 1 `i `b ]
-"162
-[; ;Conjunto.c: 162: 
-[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
-"163
-[; ;Conjunto.c: 163: 
-[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
-"164
-[; ;Conjunto.c: 164: 
-[e = _SPBRG -> -> 12 `i `uc ]
-"167
-[; ;Conjunto.c: 167:         Regla_3();
-[e = _PS0 -> -> 1 `i `b ]
-"168
-[; ;Conjunto.c: 168:     }
-[e = _PS1 -> -> 1 `i `b ]
-"169
-[; ;Conjunto.c: 169: }
-[e = _PS2 -> -> 1 `i `b ]
-"170
-[; ;Conjunto.c: 170: 
-[e = _T0CS -> -> 0 `i `b ]
 "171
-[; ;Conjunto.c: 171: 
-[e = _PSA -> -> 0 `i `b ]
+[; ;Conjunto.c: 171:     TRISA = 0xff;
+[e = _IRCF0 -> -> 1 `i `b ]
 "172
-[; ;Conjunto.c: 172: 
-[e = _INTCON -> -> 168 `i `uc ]
+[; ;Conjunto.c: 172:     TRISB = 0;
+[e = _IRCF1 -> -> 1 `i `b ]
 "173
-[; ;Conjunto.c: 173: void USART_SERVOS(void){
-[e = _TMR0 _Valor_TMR0 ]
+[; ;Conjunto.c: 173:     TRISD = 0;
+[e = _IRCF2 -> -> 1 `i `b ]
 "176
-[; ;Conjunto.c: 176:             if(USART_Servo_1 <= 250){
-[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+[; ;Conjunto.c: 176: 
+[e = _TXEN -> -> 1 `i `b ]
 "177
-[; ;Conjunto.c: 177:                 USART_Servo_1 = USART_Servo_1 + 5;
-[e = _ADIF -> -> 0 `i `b ]
+[; ;Conjunto.c: 177:     PORTA = 0;
+[e = _SYNC -> -> 0 `i `b ]
 "178
-[; ;Conjunto.c: 178:             }
-[e = . . _ADCON1bits 0 4 -> -> 0 `i `uc ]
-"179
-[; ;Conjunto.c: 179:         } else if(USART_Receptor == 'q'){
-[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
-"180
-[; ;Conjunto.c: 180:             if(USART_Servo_1 >= 5){
-[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+[; ;Conjunto.c: 178:     PORTB = 0;
+[e = _SPEN -> -> 1 `i `b ]
 "181
-[; ;Conjunto.c: 181:                 USART_Servo_1 = USART_Servo_1 - 5;
-[e = . . _ADCON0bits 1 6 -> -> 0 `i `uc ]
+[; ;Conjunto.c: 181:     PORTE = 0;
+[e = _CREN -> -> 1 `i `b ]
 "182
-[; ;Conjunto.c: 182:             }
-[e = . . _ADCON0bits 1 7 -> -> 1 `i `uc ]
+[; ;Conjunto.c: 182:     Texto("Control default es por ADC \r");
+[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
 "183
-[; ;Conjunto.c: 183:         }
-[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
+[; ;Conjunto.c: 183:     Menu();
+[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
 "184
-[; ;Conjunto.c: 184:     } else if(USART_Num_Servo == 2){
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"185
-[; ;Conjunto.c: 185:         if (USART_Receptor == 'w'){
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[; ;Conjunto.c: 184: 
+[e = _SPBRG -> -> 12 `i `uc ]
+"187
+[; ;Conjunto.c: 187:         USART_SERVOS();
+[e = _PS0 -> -> 1 `i `b ]
 "188
-[; ;Conjunto.c: 188:             }
-[e = _ANSEL -> -> 7 `i `uc ]
+[; ;Conjunto.c: 188:         Regla_3();
+[e = _PS1 -> -> 1 `i `b ]
 "189
-[; ;Conjunto.c: 189:         } else if(USART_Receptor == 'q'){
-[e = _ANSELH -> -> 0 `i `uc ]
+[; ;Conjunto.c: 189:     }
+[e = _PS2 -> -> 1 `i `b ]
 "190
-[; ;Conjunto.c: 190:             if(USART_Servo_2 >= 5){
-[e = _TRISA -> -> 255 `i `uc ]
+[; ;Conjunto.c: 190: }
+[e = _T0CS -> -> 0 `i `b ]
 "191
-[; ;Conjunto.c: 191:                 USART_Servo_2 = USART_Servo_2 - 5;
-[e = _TRISB -> -> 0 `i `uc ]
+[; ;Conjunto.c: 191: 
+[e = _PSA -> -> 0 `i `b ]
 "192
-[; ;Conjunto.c: 192:             }
-[e = _TRISD -> -> 0 `i `uc ]
+[; ;Conjunto.c: 192: 
+[e = _INTCON -> -> 168 `i `uc ]
 "193
-[; ;Conjunto.c: 193:         }
-[e = _TRISE -> -> 0 `i `uc ]
+[; ;Conjunto.c: 193: 
+[e = _TMR0 _Valor_TMR0 ]
 "196
-[; ;Conjunto.c: 196:             if(USART_Servo_3 <= 250){
-[e = _PORTA -> -> 0 `i `uc ]
+[; ;Conjunto.c: 196:         if (USART_Receptor == 'w'){
+[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
 "197
-[; ;Conjunto.c: 197:                 USART_Servo_3 = USART_Servo_3 + 5;
-[e = _PORTB -> -> 0 `i `uc ]
+[; ;Conjunto.c: 197:             if(USART_Servo_1 <= 250){
+[e = _ADIF -> -> 0 `i `b ]
 "198
-[; ;Conjunto.c: 198:             }
-[e = _PORTC -> -> 0 `i `uc ]
+[; ;Conjunto.c: 198:                 USART_Servo_1 = USART_Servo_1 + 5;
+[e = . . _ADCON1bits 0 4 -> -> 0 `i `uc ]
 "199
-[; ;Conjunto.c: 199:         } else if(USART_Receptor == 'q'){
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;Conjunto.c: 199:             }
+[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
 "200
-[; ;Conjunto.c: 200:             if(USART_Servo_3 >= 5){
-[e = _PORTE -> -> 0 `i `uc ]
+[; ;Conjunto.c: 200:         } else if(USART_Receptor == 'q'){
+[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+"201
+[; ;Conjunto.c: 201:             if(USART_Servo_1 >= 5){
+[e = . . _ADCON0bits 1 6 -> -> 0 `i `uc ]
+"202
+[; ;Conjunto.c: 202:                 USART_Servo_1 = USART_Servo_1 - 5;
+[e = . . _ADCON0bits 1 7 -> -> 1 `i `uc ]
+"203
+[; ;Conjunto.c: 203:             }
+[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
 "204
-[; ;Conjunto.c: 204:     }
-[e :U 167 ]
-{
+[; ;Conjunto.c: 204:         }
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "205
-[; ;Conjunto.c: 205:     USART_Receptor = 0;
-[e ( _USART_SERVOS ..  ]
-"206
-[; ;Conjunto.c: 206: }
-[e ( _Regla_3 ..  ]
-"207
-[; ;Conjunto.c: 207: void Regla_3(void){
-}
-[e :U 166 ]
-[e $U 167  ]
-[e :U 168 ]
+[; ;Conjunto.c: 205:     } else if(USART_Num_Servo == 2){
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
 "208
-[; ;Conjunto.c: 208:     if (Control == 0){
-[e :UE 165 ]
-}
+[; ;Conjunto.c: 208:                 USART_Servo_2 = USART_Servo_2 + 5;
+[e = _ANSEL -> -> 7 `i `uc ]
+"209
+[; ;Conjunto.c: 209:             }
+[e = _ANSELH -> -> 0 `i `uc ]
+"210
+[; ;Conjunto.c: 210:         } else if(USART_Receptor == 'q'){
+[e = _TRISA -> -> 255 `i `uc ]
+"211
+[; ;Conjunto.c: 211:             if(USART_Servo_2 >= 5){
+[e = _TRISB -> -> 0 `i `uc ]
 "212
-[; ;Conjunto.c: 212:     } else if (Control == 1){
+[; ;Conjunto.c: 212:                 USART_Servo_2 = USART_Servo_2 - 5;
+[e = _TRISD -> -> 0 `i `uc ]
+"213
+[; ;Conjunto.c: 213:             }
+[e = _TRISE -> -> 0 `i `uc ]
+"216
+[; ;Conjunto.c: 216:         if (USART_Receptor == 'w'){
+[e = _PORTA -> -> 0 `i `uc ]
+"217
+[; ;Conjunto.c: 217:             if(USART_Servo_3 <= 250){
+[e = _PORTB -> -> 0 `i `uc ]
+"218
+[; ;Conjunto.c: 218:                 USART_Servo_3 = USART_Servo_3 + 5;
+[e = _PORTC -> -> 0 `i `uc ]
+"219
+[; ;Conjunto.c: 219:             }
+[e = _PORTD -> -> 0 `i `uc ]
+"220
+[; ;Conjunto.c: 220:         } else if(USART_Receptor == 'q'){
+[e = _PORTE -> -> 0 `i `uc ]
+"221
+[; ;Conjunto.c: 221:             if(USART_Servo_3 >= 5){
+[e ( _Texto (1 :s 9C ]
+"222
+[; ;Conjunto.c: 222:                 USART_Servo_3 = USART_Servo_3 - 5;
+[e ( _Menu ..  ]
+"225
+[; ;Conjunto.c: 225:     }
+[e :U 170 ]
+{
+"226
+[; ;Conjunto.c: 226:     USART_Receptor = 0;
+[e ( _USART_SERVOS ..  ]
+"227
+[; ;Conjunto.c: 227: }
+[e ( _Regla_3 ..  ]
+"228
+[; ;Conjunto.c: 228: void Regla_3(void){
+}
+[e :U 169 ]
+[e $U 170  ]
+[e :U 171 ]
+"229
+[; ;Conjunto.c: 229:     if (Control == 0){
+[e :UE 168 ]
+}
+"233
+[; ;Conjunto.c: 233:     } else if (Control == 1){
 [v _USART_SERVOS `(v ~T0 @X0 1 ef ]
 {
 [e :U _USART_SERVOS ]
 [f ]
-"213
-[; ;Conjunto.c: 213:         Valor_Servo_1 = (USART_Servo_1-0)*(217-42)/(255-0)+42;
-[e $ ! == -> _USART_Num_Servo `i -> 1 `i 170  ]
-{
-"214
-[; ;Conjunto.c: 214:         Valor_Servo_2 = (USART_Servo_2-0)*(217-42)/(255-0)+42;
-[e $ ! == -> _USART_Receptor `ui -> 119 `ui 171  ]
-{
-"215
-[; ;Conjunto.c: 215:         Valor_Servo_3 = (USART_Servo_3-0)*(217-42)/(255-0)+42;
-[e $ ! <= -> _USART_Servo_1 `i -> 250 `i 172  ]
-{
-"216
-[; ;Conjunto.c: 216:     }
-[e = _USART_Servo_1 -> + -> _USART_Servo_1 `i -> 5 `i `uc ]
-"217
-[; ;Conjunto.c: 217: 
-}
-[e :U 172 ]
-"218
-[; ;Conjunto.c: 218: }
-}
-[e $U 173  ]
-[e :U 171 ]
-[e $ ! == -> _USART_Receptor `ui -> 113 `ui 174  ]
-{
-"219
-[e $ ! >= -> _USART_Servo_1 `i -> 5 `i 175  ]
-{
-"220
-[e = _USART_Servo_1 -> - -> _USART_Servo_1 `i -> 5 `i `uc ]
-"221
-}
-[e :U 175 ]
-"222
-}
-[e :U 174 ]
-[e :U 173 ]
-"223
-}
-[e $U 176  ]
-[e :U 170 ]
-[e $ ! == -> _USART_Num_Servo `i -> 2 `i 177  ]
-{
-"224
-[e $ ! == -> _USART_Receptor `ui -> 119 `ui 178  ]
-{
-"225
-[e $ ! <= -> _USART_Servo_2 `i -> 250 `i 179  ]
-{
-"226
-[e = _USART_Servo_2 -> + -> _USART_Servo_2 `i -> 5 `i `uc ]
-"227
-}
-[e :U 179 ]
-"228
-}
-[e $U 180  ]
-[e :U 178 ]
-[e $ ! == -> _USART_Receptor `ui -> 113 `ui 181  ]
-{
-"229
-[e $ ! >= -> _USART_Servo_2 `i -> 5 `i 182  ]
-{
-"230
-[e = _USART_Servo_2 -> - -> _USART_Servo_2 `i -> 5 `i `uc ]
-"231
-}
-[e :U 182 ]
-"232
-}
-[e :U 181 ]
-[e :U 180 ]
-"233
-}
-[e $U 183  ]
-[e :U 177 ]
-[e $ ! == -> _USART_Num_Servo `i -> 3 `i 184  ]
-{
 "234
-[e $ ! == -> _USART_Receptor `ui -> 119 `ui 185  ]
+[; ;Conjunto.c: 234:         Valor_Servo_1 = (USART_Servo_1-0)*(217-42)/(255-0)+42;
+[e $ ! == -> _USART_Num_Servo `i -> 1 `i 173  ]
 {
 "235
-[e $ ! <= -> _USART_Servo_3 `i -> 250 `i 186  ]
+[; ;Conjunto.c: 235:         Valor_Servo_2 = (USART_Servo_2-0)*(217-42)/(255-0)+42;
+[e $ ! == -> _USART_Receptor `ui -> 119 `ui 174  ]
 {
 "236
-[e = _USART_Servo_3 -> + -> _USART_Servo_3 `i -> 5 `i `uc ]
-"237
-}
-[e :U 186 ]
-"238
-}
-[e $U 187  ]
-[e :U 185 ]
-[e $ ! == -> _USART_Receptor `ui -> 113 `ui 188  ]
+[; ;Conjunto.c: 236:         Valor_Servo_3 = (USART_Servo_3-0)*(217-42)/(255-0)+42;
+[e $ ! <= -> _USART_Servo_1 `i -> 250 `i 175  ]
 {
+"237
+[; ;Conjunto.c: 237:     }
+[e = _USART_Servo_1 -> + -> _USART_Servo_1 `i -> 5 `i `uc ]
+"238
+[; ;Conjunto.c: 238: 
+}
+[e :U 175 ]
 "239
-[e $ ! >= -> _USART_Servo_3 `i -> 5 `i 189  ]
+[; ;Conjunto.c: 239: }
+}
+[e $U 176  ]
+[e :U 174 ]
+[e $ ! == -> _USART_Receptor `ui -> 113 `ui 177  ]
 {
 "240
-[e = _USART_Servo_3 -> - -> _USART_Servo_3 `i -> 5 `i `uc ]
+[; ;Conjunto.c: 240: void Texto(char texto[]){
+[e $ ! >= -> _USART_Servo_1 `i -> 5 `i 178  ]
+{
 "241
-}
-[e :U 189 ]
+[; ;Conjunto.c: 241:     char i = 0;
+[e = _USART_Servo_1 -> - -> _USART_Servo_1 `i -> 5 `i `uc ]
 "242
+[; ;Conjunto.c: 242:     while(texto[i] != '\0'){
 }
-[e :U 188 ]
-[e :U 187 ]
+[e :U 178 ]
 "243
+[; ;Conjunto.c: 243:         TXREG = texto[i];
+}
+[e :U 177 ]
+[e :U 176 ]
+"244
+[; ;Conjunto.c: 244:         i++;
+}
+[e $U 179  ]
+[e :U 173 ]
+[e $ ! == -> _USART_Num_Servo `i -> 2 `i 180  ]
+{
+"245
+[; ;Conjunto.c: 245:         _delay((unsigned long)((1)*(8000000/4000.0)));
+[e $ ! == -> _USART_Receptor `ui -> 119 `ui 181  ]
+{
+"246
+[; ;Conjunto.c: 246:     }
+[e $ ! <= -> _USART_Servo_2 `i -> 250 `i 182  ]
+{
+"247
+[; ;Conjunto.c: 247: }
+[e = _USART_Servo_2 -> + -> _USART_Servo_2 `i -> 5 `i `uc ]
+"248
+[; ;Conjunto.c: 248: void Menu(void){
+}
+[e :U 182 ]
+"249
+[; ;Conjunto.c: 249:     Texto("Cambiar control: Control con USART (5), Control con ADC (4) \r");
+}
+[e $U 183  ]
+[e :U 181 ]
+[e $ ! == -> _USART_Receptor `ui -> 113 `ui 184  ]
+{
+"250
+[; ;Conjunto.c: 250:     Texto("\r");
+[e $ ! >= -> _USART_Servo_2 `i -> 5 `i 185  ]
+{
+"251
+[; ;Conjunto.c: 251: }
+[e = _USART_Servo_2 -> - -> _USART_Servo_2 `i -> 5 `i `uc ]
+"252
+}
+[e :U 185 ]
+"253
 }
 [e :U 184 ]
 [e :U 183 ]
-[e :U 176 ]
-"244
-[e = _USART_Receptor -> -> 0 `i `uc ]
-"245
-[e :UE 169 ]
+"254
 }
-"246
+[e $U 186  ]
+[e :U 180 ]
+[e $ ! == -> _USART_Num_Servo `i -> 3 `i 187  ]
+{
+"255
+[e $ ! == -> _USART_Receptor `ui -> 119 `ui 188  ]
+{
+"256
+[e $ ! <= -> _USART_Servo_3 `i -> 250 `i 189  ]
+{
+"257
+[e = _USART_Servo_3 -> + -> _USART_Servo_3 `i -> 5 `i `uc ]
+"258
+}
+[e :U 189 ]
+"259
+}
+[e $U 190  ]
+[e :U 188 ]
+[e $ ! == -> _USART_Receptor `ui -> 113 `ui 191  ]
+{
+"260
+[e $ ! >= -> _USART_Servo_3 `i -> 5 `i 192  ]
+{
+"261
+[e = _USART_Servo_3 -> - -> _USART_Servo_3 `i -> 5 `i `uc ]
+"262
+}
+[e :U 192 ]
+"263
+}
+[e :U 191 ]
+[e :U 190 ]
+"264
+}
+[e :U 187 ]
+[e :U 186 ]
+[e :U 179 ]
+"265
+[e = _USART_Receptor -> -> 0 `i `uc ]
+"266
+[e :UE 172 ]
+}
+"267
 [v _Regla_3 `(v ~T0 @X0 1 ef ]
 {
 [e :U _Regla_3 ]
 [f ]
-"247
-[e $ ! == -> _Control `i -> 0 `i 191  ]
+"268
+[e $ ! == -> _Control `i -> 0 `i 194  ]
 {
-"248
+"269
 [e = _Valor_Servo_1 -> + / * - -> _ADRESH_Servo_1 `i -> 0 `i - -> 217 `i -> 42 `i - -> 255 `i -> 0 `i -> 42 `i `uc ]
-"249
+"270
 [e = _Valor_Servo_2 -> + / * - -> _ADRESH_Servo_2 `i -> 0 `i - -> 217 `i -> 42 `i - -> 255 `i -> 0 `i -> 42 `i `uc ]
-"250
+"271
 [e = _Valor_Servo_3 -> + / * - -> _ADRESH_Servo_3 `i -> 0 `i - -> 217 `i -> 42 `i - -> 255 `i -> 0 `i -> 42 `i `uc ]
-"251
+"272
 }
-[e $U 192  ]
-[e :U 191 ]
-[e $ ! == -> _Control `i -> 1 `i 193  ]
+[e $U 195  ]
+[e :U 194 ]
+[e $ ! == -> _Control `i -> 1 `i 196  ]
 {
-"252
+"273
 [e = _Valor_Servo_1 -> + / * - -> _USART_Servo_1 `i -> 0 `i - -> 217 `i -> 42 `i - -> 255 `i -> 0 `i -> 42 `i `uc ]
-"253
+"274
 [e = _Valor_Servo_2 -> + / * - -> _USART_Servo_2 `i -> 0 `i - -> 217 `i -> 42 `i - -> 255 `i -> 0 `i -> 42 `i `uc ]
-"254
+"275
 [e = _Valor_Servo_3 -> + / * - -> _USART_Servo_3 `i -> 0 `i - -> 217 `i -> 42 `i - -> 255 `i -> 0 `i -> 42 `i `uc ]
-"255
+"276
 }
-[e :U 193 ]
-[e :U 192 ]
-"257
-[e :UE 190 ]
+[e :U 196 ]
+[e :U 195 ]
+"278
+[e :UE 193 ]
 }
+"279
+[v _Texto `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _Texto ]
+[v _texto `*uc ~T0 @X0 1 r1 ]
+[f ]
+"280
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+"281
+[e $U 198  ]
+[e :U 199 ]
+{
+"282
+[e = _TXREG -> *U + _texto * -> _i `ux -> -> # *U _texto `ui `ux `uc ]
+"283
+[e ++ _i -> -> 1 `i `uc ]
+"284
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"285
+}
+[e :U 198 ]
+"281
+[e $ != -> *U + _texto * -> _i `ux -> -> # *U _texto `ui `ux `ui -> 0 `ui 199  ]
+[e :U 200 ]
+"286
+[e :UE 197 ]
+}
+"287
+[v _Menu `(v ~T0 @X0 1 ef ]
+{
+[e :U _Menu ]
+[f ]
+"288
+[e ( _Texto (1 :s 10C ]
+"289
+[e ( _Texto (1 :s 11C ]
+"290
+[e :UE 201 ]
+}
+[a 6C 83 69 82 86 79 32 51 58 32 87 32 73 110 99 114 101 109 101 110 116 97 114 44 32 81 32 68 101 99 114 101 109 101 110 116 97 114 32 13 0 ]
+[a 4C 83 69 82 86 79 32 50 58 32 87 32 73 110 99 114 101 109 101 110 116 97 114 44 32 81 32 68 101 99 114 101 109 101 110 116 97 114 32 13 0 ]
+[a 2C 83 69 82 86 79 32 49 58 32 87 32 73 110 99 114 101 109 101 110 116 97 114 44 32 81 32 68 101 99 114 101 109 101 110 116 97 114 32 13 0 ]
+[a 9C 67 111 110 116 114 111 108 32 100 101 102 97 117 108 116 32 101 115 32 112 111 114 32 65 68 67 32 13 0 ]
+[a 8C 83 69 82 86 79 32 97 32 115 101 108 101 99 99 105 111 110 97 114 58 32 40 49 41 32 40 50 41 32 40 51 41 58 32 13 0 ]
+[a 10C 67 97 109 98 105 97 114 32 99 111 110 116 114 111 108 58 32 67 111 110 116 114 111 108 32 99 111 110 32 85 83 65 82 84 32 40 53 41 44 32 67 111 110 116 114 111 108 32 99 111 110 32 65 68 67 32 40 52 41 32 13 0 ]
+[a 1C 13 0 ]
+[a 3C 13 0 ]
+[a 5C 13 0 ]
+[a 7C 13 0 ]
+[a 11C 13 0 ]
